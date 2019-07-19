@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="addButton">PRESS ME/Add to storage</div>
+    <div id="seeButton">Press me/view storage</div>
+    Snack:<input type="text" id="snacks">
+    Appetizer:<input type="text" id="app">
+
+
+
+    <script>
+        document.getElementById("addButton").addEventListener('click', addToStorage);
+        document.getElementById("seeButton").addEventListener('click', viewStorage);
+
+        function addToStorage() {
+            let tempFirst = document.getElementById('snacks').value;
+            let tempLast = document.getElementById('app').value;
+            let obj = JSON.stringify({ "snack": tempFirst, "app": tempLast });
+            console.log(obj)
+            localStorage.setItem("tester", obj)
+            console.log('clicked' + obj);
+        }
+        function viewStorage() {
+            let tempHolder = localStorage.getItem("tester")
+
+            console.log('clicked' + tempHolder);
+        }
+
+        var object = { "name": "michelle" }
+        var object2 = { ["name"]: "isabella" }
+        var object3 = {}
+        object3["name"] = "michelle";
+        object3["myobj"] = object2;
+        console.log(object, object2, object3)
+
+        var sides = ["mashed potatos", "green beans"]
+        var deserts = ["chocolate fudge cake", "icecream"]
+        var dinner = { ["entree"]: "roastedchicken", "utensil": "fork" }
+        dinner["drink"] = "sweet tea"
+        dinner.sides = sides
+        dinner["deserts"] = deserts
+        console.log(dinner)
+
+        var objStringified =
+            JSON.stringify(dinner);
+
+        var objParsed =
+            JSON.parse(objStringified);
+        objParsed["entree"] = "turkey"
+        console.log(objParsed)
+        var data = JSON.stringify(objParsed);
+        console.log(data)
+
+    </script>
+</body>
+
+</html>
